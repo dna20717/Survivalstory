@@ -90,10 +90,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 /* Handy */
 @media (max-width:720px){
   .main{padding:32px 20px}
-  .hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "cover" "shops";grid-template-rows:auto;row-gap:32px}
+  .hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "sub" "cover" "shops";grid-template-rows:auto;row-gap:32px}
   .h-title{font-size:clamp(36px,14vw,64px)}
   .replay{display:flex;gap:.22em}
-  .h-sub{display:none}
+  .h-sub{font-size:17px;margin-top:-18px}
   .h-cover{width:100%;max-width:340px;justify-self:center}
   .back{font-size:3.7cqw}
   .h-shops{flex-direction:column}
