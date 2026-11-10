@@ -198,7 +198,7 @@
   var WEAK = {
     wasser: ['Wasser', 'Ohne Essen hält man Wochen durch, ohne Trinken nur wenige Tage. Das BBK rät zu 2 Litern pro Person und Tag.'],
     essen: ['Essen', 'Was ungekühlt im Schrank steht, entscheidet. Und ob Du es ohne Strom warm bekommst.'],
-    medis: ['Medikamente', 'Dein Vorrat ist schneller leer als alles andere. Sprich mit Deiner Arztpraxis oder Apotheke über eine Reserve.']
+    medis: ['Medikamente', 'Dein Vorrat ist schneller leer als alles andere. Das BBK rät zu mindestens zehn Tagen. Sprich mit Deiner Arztpraxis oder Apotheke über eine Reserve.']
   };
   var PLUS = {
     nachbarn: ['Deine Nachbarn', 'Wer sich kennt, teilt. Und passt aufeinander auf. Im Ernstfall ist das mehr wert als jeder Vorrat.'],
