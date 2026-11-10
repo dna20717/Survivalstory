@@ -219,6 +219,131 @@
     return TIERS[TIERS.length - 1];
   }
 
+
+  /* ------------------------------------------------------------------
+     Ergebnis als Bild (1080 × 1350), wird nur im Browser gezeichnet
+  ------------------------------------------------------------------ */
+  var coverImg = null;
+  function loadCover() {
+    if (coverImg) return Promise.resolve(coverImg);
+    return new Promise(function (res) {
+      var im = new Image();
+      im.onload = function () { coverImg = im; res(im); };
+      im.onerror = function () { res(null); };
+      im.src = 'assets/cover.jpg';
+    });
+  }
+  function fontsReady() {
+    if (!document.fonts || !document.fonts.load) return Promise.resolve();
+    return Promise.all([
+      document.fonts.load('400 100px Anton'),
+      document.fonts.load('300 40px Inter'),
+      document.fonts.load('600 40px Inter')
+    ]).catch(function () {});
+  }
+  function fitText(ctx, text, font, size, maxW) {
+    var s = size;
+    ctx.font = font.replace('{s}', s);
+    while (ctx.measureText(text).width > maxW && s > 10) { s -= 2; ctx.font = font.replace('{s}', s); }
+    return s;
+  }
+  function wrap(ctx, text, maxW) {
+    var words = text.split(' '), lines = [], line = '';
+    words.forEach(function (w) {
+      var t = line ? line + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else { line = t; }
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function buildPoster(r) {
+    return Promise.all([fontsReady(), loadCover()]).then(function (res) {
+      var cover = res[1];
+      var W = 1080, H = 1350, P = 84;
+      var cv = document.createElement('canvas');
+      cv.width = W; cv.height = H;
+      var ctx = cv.getContext('2d');
+      var ACC = '#e8662a', INK = '#f2ede6', STONE = '#8f8a84', SOFT = '#d9d3ca', MUTED = '#a39d95';
+
+      // Grund mit leiser Glut von unten
+      ctx.fillStyle = '#0b0b0a'; ctx.fillRect(0, 0, W, H);
+      var g = ctx.createRadialGradient(W * 0.5, H * 1.05, 40, W * 0.5, H * 1.05, H * 0.75);
+      g.addColorStop(0, 'rgba(232,102,42,0.22)'); g.addColorStop(1, 'rgba(232,102,42,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 2;
+      ctx.strokeRect(24, 24, W - 48, H - 48);
+
+      // Kopf
+      ctx.textBaseline = 'alphabetic';
+      ctx.font = '400 54px Anton'; ctx.fillStyle = STONE;
+      ctx.fillText('OHNE', P, 150);
+      var ow = ctx.measureText('OHNE ').width;
+      ctx.fillStyle = ACC; ctx.fillText('LICHT', P + ow, 150);
+      ctx.font = '600 26px Inter'; ctx.fillStyle = MUTED;
+      ctx.textAlign = 'right';
+      ctx.fillText('B L A C K O U T - T E S T', W - P, 142);
+      ctx.textAlign = 'left';
+
+      // Zahl
+      ctx.font = '600 34px Inter'; ctx.fillStyle = SOFT;
+      ctx.fillText('ICH HALTE', P, 300);
+      var label = r.days >= 30 ? '30+' : String(r.days);
+      ctx.font = '400 400px Anton'; ctx.fillStyle = ACC;
+      ctx.fillText(label, P - 10, 680);
+      var nw = ctx.measureText(label).width;
+      ctx.font = '400 110px Anton'; ctx.fillStyle = STONE;
+      var unit = r.days === 1 ? 'TAG' : 'TAGE';
+      var unitX = P + nw + 24;
+      if (unitX + ctx.measureText(unit).width > W - P) unitX = W - P - ctx.measureText(unit).width;
+      ctx.fillText(unit, unitX, 600);
+      ctx.font = '400 70px Anton'; ctx.fillStyle = STONE;
+      ctx.fillText('DURCH', unitX, 680);
+
+      // Stufe
+      var tier = tierFor(r.days).title.toUpperCase();
+      fitText(ctx, tier, '400 {s}px Anton', 96, W - 2 * P);
+      ctx.fillStyle = INK; ctx.fillText(tier, P, 815);
+
+      // Engpass / Pluspunkt
+      ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(P, 868, W - 2 * P, 2);
+      var colW = (W - 2 * P - 40) / 2;
+      [['ENGPASS', WEAK[r.weak][0]], ['PLUSPUNKT', PLUS[r.plus][0]]].forEach(function (c, i) {
+        var x = P + i * (colW + 40);
+        ctx.font = '600 24px Inter'; ctx.fillStyle = MUTED;
+        ctx.fillText(c[0].split('').join(' '), x, 926);
+        fitText(ctx, c[1], '600 {s}px Inter', 44, colW);
+        ctx.fillStyle = i === 0 ? ACC : INK;
+        ctx.fillText(c[1], x, 984);
+      });
+      ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(P, 1026, W - 2 * P, 2);
+
+      // Fuß: Cover + Einladung
+      var cw = 130, ch = 208, cy = H - P - ch + 6;
+      if (cover) {
+        ctx.save();
+        ctx.shadowColor = 'rgba(232,102,42,0.25)'; ctx.shadowBlur = 40;
+        ctx.drawImage(cover, P, cy, cw, ch);
+        ctx.restore();
+        ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 2; ctx.strokeRect(P, cy, cw, ch);
+      }
+      var tx = cover ? P + cw + 40 : P, tw = W - P - tx;
+      ctx.font = '600 44px Inter'; ctx.fillStyle = INK;
+      var lines = wrap(ctx, 'Wie lange hältst Du durch?', tw);
+      var ty = cy + 62;
+      lines.forEach(function (l) { ctx.fillText(l, tx, ty); ty += 54; });
+      ctx.font = '600 38px Inter'; ctx.fillStyle = ACC;
+      ctx.fillText(SHARE_HOST, tx, ty + 20);
+      ctx.font = '300 26px Inter'; ctx.fillStyle = MUTED;
+      ctx.fillText('Der Test zum Thriller von Daniel Nagel', tx, ty + 70);
+
+      return new Promise(function (res) {
+        if (cv.toBlob) cv.toBlob(function (b) { res(b); }, 'image/png');
+        else res(null);
+      });
+    });
+  }
+
   /* ------------------------------------------------------------------
      Ablauf
   ------------------------------------------------------------------ */
@@ -228,6 +353,8 @@
   var meta = $('meta');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var SHARE_URL = document.body.getAttribute('data-share-url') || location.href.split('#')[0];
+  var SHARE_HOST = SHARE_URL.replace(/^https?:\/\//, '').replace(/\.html$/, '').replace(/\/test$/, '/test');
+  var posterBlob = null, posterUrl = null;
 
   var answers = {};
   var step = 0;
@@ -361,6 +488,35 @@
       } catch (e) { fail(); }
     };
     $('r-again').textContent = own ? 'Test neu starten' : 'Selbst testen';
+
+    // Ergebnisbild
+    if (own) {
+      var img = $('r-img');
+      img.alt = 'Ergebnisbild: ' + label + (r.days === 1 ? ' Tag' : ' Tage') + ', ' + tier.title + '. Engpass: ' + WEAK[r.weak][0] + '. Pluspunkt: ' + PLUS[r.plus][0] + '.';
+      posterBlob = null;
+      buildPoster(r).then(function (blob) {
+        if (!blob) { $('r-img-btn').hidden = true; return; }
+        posterBlob = blob;
+        if (posterUrl) URL.revokeObjectURL(posterUrl);
+        posterUrl = URL.createObjectURL(blob);
+        img.src = posterUrl;
+        var file = new File([blob], 'ohne-licht-' + label.replace('+', 'plus') + '-tage.png', { type: 'image/png' });
+        var canShareFile = false;
+        try { canShareFile = !!(navigator.canShare && navigator.canShare({ files: [file] })); } catch (e) {}
+        $('r-img-label').textContent = canShareFile ? 'Bild teilen' : 'Bild speichern';
+        $('r-img-btn').hidden = false;
+        $('r-img-btn').onclick = function () {
+          if (canShareFile) {
+            navigator.share({ files: [file], text: msg }).catch(function () {});
+          } else {
+            var a = document.createElement('a');
+            a.href = posterUrl; a.download = file.name;
+            document.body.appendChild(a); a.click(); a.remove();
+            $('r-copied').textContent = 'Bild gespeichert.';
+          }
+        };
+      });
+    }
 
     meta.textContent = 'Ergebnis';
     setProgress(QUESTIONS.length);
