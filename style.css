@@ -9,6 +9,16 @@ html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .page{min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
 
+/* Test-Links */
+.top-link{display:flex;justify-content:flex-end;padding:16px 24px 0}
+.top-link a{font-size:13px;letter-spacing:.02em;color:#8a857e;text-decoration:none;transition:color .2s ease}
+.top-link a:hover{color:var(--accent)}
+.test-link{flex-basis:100%;margin-top:6px;font-size:15px;color:#c9c3ba;text-decoration:none;border-bottom:1px solid transparent;align-self:flex-start;width:max-content;max-width:100%;transition:color .2s ease,border-color .2s ease}
+.test-link:hover{color:var(--accent);border-color:rgba(232,102,42,.5)}
+.tick-track a.tick-test{display:inline-flex;align-items:center;gap:14px;padding:14px 0 14px 14px;font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(232,102,42,.5)}
+.tick-track a.tick-test::before{content:"+++";font-weight:600;letter-spacing:.05em;color:var(--accent);text-decoration:none;display:inline-block}
+.tick-track a.tick-test:hover{color:#ff8a52}
+
 /* Hero */
 .main{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:64px 24px 48px}
 .hero{width:100%;max-width:1160px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);grid-template-areas:"title cover" "sub cover" "shops cover";grid-template-rows:auto auto 1fr;column-gap:72px;row-gap:28px;align-items:start}
@@ -97,6 +107,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
   .h-cover{width:100%;max-width:340px;justify-self:center}
   .back{font-size:3.7cqw}
   .h-shops{flex-direction:column}
+  .test-link{width:auto;text-align:center;align-self:center;margin-top:10px;font-size:14px}
+  .top-link{padding:14px 20px 0}
   .shop{width:100%}
 }
 
