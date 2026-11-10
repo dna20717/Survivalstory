@@ -34,9 +34,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 /* Wendecover */
 .flip{all:unset;cursor:pointer;display:block;position:relative;width:100%;perspective:1600px;container-type:inline-size;transition:transform .5s cubic-bezier(.2,.7,.2,1);-webkit-tap-highlight-color:transparent}
 .flip:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
-.card{display:block;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.65,0,.35,1);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.card{display:block;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.65,0,.35,1);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 70px rgba(232,102,42,.09),0 0 22px rgba(242,237,230,.035)}
 .flip.is-flipped .card{transform:rotateY(180deg)}
-.face{display:block;width:100%;height:auto;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:4px;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.face{display:block;width:100%;height:auto;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:4px;box-shadow:0 0 0 1px rgba(255,255,255,.11),inset 0 0 0 1px rgba(255,255,255,.03)}
 .back{position:absolute;inset:0;transform:rotateY(180deg);background:#141311;display:flex;flex-direction:column;justify-content:center;gap:.75em;padding:8% 9%;text-align:left;font-size:3.6cqw;font-weight:300;line-height:1.5;color:var(--soft);overflow-y:auto}
 .back span{display:block}
 .back .lead{font-weight:600;color:var(--ink)}
