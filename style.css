@@ -14,6 +14,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 .hero{width:100%;max-width:1160px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);grid-template-areas:"title cover" "sub cover" "shops cover";grid-template-rows:auto auto 1fr;column-gap:72px;row-gap:28px;align-items:start}
 
 .h-title{grid-area:title;margin:0;min-width:0;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(72px,12vw,168px);line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .replay{all:unset;cursor:pointer;display:block}
 .replay:focus-visible{outline:2px solid var(--accent);outline-offset:8px}
 .w-fix{display:block;height:1.08em;color:#8f8a84}
