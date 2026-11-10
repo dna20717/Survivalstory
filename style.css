@@ -59,9 +59,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 .tick{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:stretch;overflow:hidden}
 .tick-label{flex:0 0 auto;display:flex;align-items:center;padding:0 18px;background:var(--accent);color:var(--bg);font-size:12px;font-weight:600;letter-spacing:.14em}
 .tick-view{flex:1 1 auto;min-width:0;overflow:hidden}
-.tick-track{display:flex;width:max-content;animation:tick 80s linear infinite}
+.tick-track{display:flex;width:max-content;animation:tick 210s linear infinite}
 .tick:hover .tick-track{animation-play-state:paused}
 .tick-track span{display:inline-flex;align-items:center;gap:14px;padding:14px 0 14px 14px;font-size:14px;color:var(--soft);white-space:nowrap}
+.tick-track time{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.tick-track span.end{font-style:italic;color:var(--muted)}
 .tick-track span::before{content:"+++";font-weight:600;letter-spacing:.05em;color:var(--accent)}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
