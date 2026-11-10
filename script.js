@@ -70,6 +70,22 @@
     }
   });
 
+  // Christinas Zahlenfolge: taucht an zufälliger Stelle im Ticker auf
+  var tt = document.querySelector('.tick-track');
+  if (tt) {
+    var n = tt.children.length / 2;
+    var r = 3 + Math.floor(Math.random() * (n - 5));
+    var mk = function (hidden) {
+      var el = document.createElement('span');
+      el.className = 'num';
+      el.textContent = '3 9 13 47 23 42';
+      if (hidden) el.setAttribute('aria-hidden', 'true');
+      return el;
+    };
+    tt.insertBefore(mk(false), tt.children[r]);
+    tt.insertBefore(mk(true), tt.children[n + 1 + r]);
+  }
+
   // Wendecover
   var flip = document.querySelector('.flip');
   flip.addEventListener('click', function () {
