@@ -23,7 +23,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 .w-track span{display:block;height:1.08em;color:var(--soft)}
 .w-track span.hot{color:var(--accent)}
 
-.h-sub{grid-area:sub;margin:0;font-size:18px;font-weight:300;line-height:1.45;color:#c9c3ba}
+.h-sub{grid-area:sub;margin:0;font-size:20px;font-weight:300;font-style:italic;line-height:1.45;color:#c9c3ba}
 .h-sub strong{font-weight:600;color:var(--ink)}
 
 .h-cover{grid-area:cover;align-self:center}
