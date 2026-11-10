@@ -10,8 +10,8 @@
   var QUESTIONS = [
     {
       id: 'ort', time: 'Tag 0 · 19:12 Uhr',
-      scene: 'Der Fernseher geht aus. Das Licht auch. Dein Handy bleibt schwarz, egal welchen Knopf du drückst.',
-      text: 'Wo bist du gerade zu Hause?',
+      scene: 'Der Fernseher geht aus. Das Licht auch. Dein Handy bleibt schwarz, egal welchen Knopf Du drückst.',
+      text: 'Wo bist Du gerade zu Hause?',
       answers: [
         ['hoch', 'Stadtwohnung, vierter Stock oder höher'],
         ['stadt', 'Stadtwohnung weiter unten oder Reihenhaus'],
@@ -22,7 +22,7 @@
     {
       id: 'erste', time: 'Tag 0 · 19:20 Uhr',
       scene: 'Vor der Tür stehen Nachbarn mit Kerzen. Niemand weiß etwas.',
-      text: 'Was tust du in der ersten Stunde?',
+      text: 'Was tust Du in der ersten Stunde?',
       answers: [
         ['warten', 'Abwarten. Morgen ist bestimmt alles wieder normal.'],
         ['markt', 'Schnell zum Supermarkt, solange noch offen ist.'],
@@ -32,8 +32,8 @@
     },
     {
       id: 'trinken', time: 'Tag 0 · 21:40 Uhr',
-      scene: 'Inventur im Dunkeln. Du tastest dich durch die Schränke.',
-      text: 'Wie viel Wasser und andere Getränke hast du pro Person im Haus?',
+      scene: 'Inventur im Dunkeln. Du tastest Dich durch die Schränke.',
+      text: 'Wie viel Wasser und andere Getränke hast Du pro Person im Haus?',
       answers: [
         ['1', 'Eine angebrochene Flasche'],
         ['2', 'Ein, zwei Sixpacks, also 5 bis 10 Liter'],
@@ -44,7 +44,7 @@
     {
       id: 'essen', time: 'Tag 1 · 08:30 Uhr',
       scene: 'Der Kühlschrank ist warm. Die Milch riecht schon.',
-      text: 'Wie lange könntest du von dem leben, was ungekühlt im Schrank steht?',
+      text: 'Wie lange könntest Du von dem leben, was ungekühlt im Schrank steht?',
       answers: [
         ['1', 'Ein, zwei Tage'],
         ['2', 'Drei bis fünf Tage'],
@@ -55,7 +55,7 @@
     {
       id: 'kochen', time: 'Tag 1 · 12:15 Uhr',
       scene: 'Die Nudeln sind da. Der Herd bleibt kalt.',
-      text: 'Wie machst du etwas Warmes?',
+      text: 'Wie machst Du etwas Warmes?',
       answers: [
         ['nichts', 'Gar nicht. Ich habe nur einen Elektroherd.'],
         ['grill', 'Mit dem Holzkohlegrill, draußen auf Balkon oder Terrasse'],
@@ -66,7 +66,7 @@
     {
       id: 'licht', time: 'Tag 1 · 19:30 Uhr',
       scene: 'Es wird wieder dunkel. Kein Motor, kein Fernseher, nirgends ein Bildschirm. Nur Stille.',
-      text: 'Womit machst du Licht, und wie erfährst du, was los ist?',
+      text: 'Womit machst Du Licht, und wie erfährst Du, was los ist?',
       answers: [
         ['handy', 'Gar nicht. Mein Handy ist tot, und sonst habe ich nichts.'],
         ['kerzen', 'Kerzen und eine Taschenlampe, aber keine Ersatzbatterien'],
@@ -77,7 +77,7 @@
     {
       id: 'medis', time: 'Tag 2 · 09:10 Uhr',
       scene: 'Vor der Apotheke hängt ein Zettel: „Geschlossen“.',
-      text: 'Bist du auf Medikamente angewiesen?',
+      text: 'Bist Du auf Medikamente angewiesen?',
       answers: [
         ['nein', 'Nein'],
         ['lang', 'Ja, und mein Vorrat reicht mehr als zwei Wochen'],
@@ -99,7 +99,7 @@
     {
       id: 'geld', time: 'Tag 3 · 10:00 Uhr',
       scene: 'Ein Bäcker verkauft, was er noch hat. Am Kartenleser klebt ein Zettel.',
-      text: 'Wie viel Bargeld hast du zu Hause?',
+      text: 'Wie viel Bargeld hast Du zu Hause?',
       answers: [
         ['0', 'Fast nichts'],
         ['1', 'Unter 100 Euro'],
@@ -109,8 +109,8 @@
     },
     {
       id: 'nachbarn', time: 'Tag 4 · 18:05 Uhr',
-      scene: 'Es klopft an deiner Tür.',
-      text: 'Wie gut kennst du die Menschen in deiner Straße?',
+      scene: 'Es klopft an Deiner Tür.',
+      text: 'Wie gut kennst Du die Menschen in Deiner Straße?',
       answers: [
         ['0', 'Gar nicht'],
         ['1', 'Vom Grüßen'],
@@ -164,7 +164,7 @@
     var days = Math.max(1, Math.round(core * mod));
     if (days > 30) days = 30;
 
-    // Pluspunkt: das stärkste, was du mitbringst
+    // Pluspunkt: das stärkste, was Du mitbringst
     var plusCandidates = [
       ['nachbarn', a.nachbarn === '3' ? 1.2 : (a.nachbarn === '2' ? 1.1 : 0)],
       ['reaktion', a.erste === 'wasser' ? 1.15 : 0],
@@ -188,17 +188,17 @@
      Texte für das Ergebnis
   ------------------------------------------------------------------ */
   var TIERS = [
-    { max: 2, title: 'Die erste Nacht', text: 'Die erste Nacht überstehst du. Danach wird es eng, und zwar schnell. Spätestens am zweiten Tag musst du raus und suchen, was dir fehlt. Genau wie alle anderen.' },
-    { max: 5, title: 'Kerzenschein', text: 'Ein paar Tage gehen gut. Dann wird aus Abwarten Organisieren, und du stehst mit vielen anderen vor denselben leeren Regalen.' },
-    { max: 9, title: 'Durststrecke', text: 'Du bist besser vorbereitet als die meisten. Für einen langen Ausfall fehlt dir trotzdem ein Stück. Die gute Nachricht: Es ist meist nur eine Sache.' },
-    { max: 19, title: 'Vorbereitet', text: 'Du erfüllst die Empfehlung des BBK: zehn Tage aus eigener Kraft. Wenn es länger dauert, entscheidet bald etwas anderes, nämlich wem du vertraust.' },
-    { max: 30, title: 'Prepper', text: 'Christinas Eltern wären stolz auf dich. Bleibt nur eine Frage: Was tust du, wenn jemand an deine Tür klopft und Hunger hat?' }
+    { max: 2, title: 'Die erste Nacht', text: 'Die erste Nacht überstehst Du. Danach wird es eng, und zwar schnell. Spätestens am zweiten Tag musst Du raus und suchen, was Dir fehlt. Genau wie alle anderen.' },
+    { max: 5, title: 'Kerzenschein', text: 'Ein paar Tage gehen gut. Dann wird aus Abwarten Organisieren, und Du stehst mit vielen anderen vor denselben leeren Regalen.' },
+    { max: 9, title: 'Durststrecke', text: 'Du bist besser vorbereitet als die meisten. Für einen langen Ausfall fehlt Dir trotzdem ein Stück. Die gute Nachricht: Es ist meist nur eine Sache.' },
+    { max: 19, title: 'Vorbereitet', text: 'Du erfüllst die Empfehlung des BBK: zehn Tage aus eigener Kraft. Wenn es länger dauert, entscheidet bald etwas anderes, nämlich wem Du vertraust.' },
+    { max: 30, title: 'Prepper', text: 'Christinas Eltern wären stolz auf Dich. Bleibt nur eine Frage: Was tust Du, wenn jemand an Deine Tür klopft und Hunger hat?' }
   ];
 
   var WEAK = {
     wasser: ['Wasser', 'Ohne Essen hält man Wochen durch, ohne Trinken nur wenige Tage. Das BBK rät zu 2 Litern pro Person und Tag.'],
-    essen: ['Essen', 'Was ungekühlt im Schrank steht, entscheidet. Und ob du es ohne Strom warm bekommst.'],
-    medis: ['Medikamente', 'Dein Vorrat ist schneller leer als alles andere. Sprich mit deiner Arztpraxis oder Apotheke über eine Reserve.']
+    essen: ['Essen', 'Was ungekühlt im Schrank steht, entscheidet. Und ob Du es ohne Strom warm bekommst.'],
+    medis: ['Medikamente', 'Dein Vorrat ist schneller leer als alles andere. Sprich mit Deiner Arztpraxis oder Apotheke über eine Reserve.']
   };
   var PLUS = {
     nachbarn: ['Deine Nachbarn', 'Wer sich kennt, teilt. Und passt aufeinander auf. Im Ernstfall ist das mehr wert als jeder Vorrat.'],
@@ -206,12 +206,12 @@
     radio: ['Dein Radio', 'Wer informiert ist, trifft bessere Entscheidungen und fällt auf weniger Gerüchte herein.'],
     ofen: ['Dein Ofen', 'Wärme und warmes Essen, ganz ohne Strom. Spätestens im Oktober ist das Gold wert.'],
     lage: ['Deine Lage', 'Auf dem Land gibt es Brunnen, Gärten und Holz. Und weniger Gedränge.'],
-    vorrat: ['Dein Vorrat', 'Genug zu trinken und zu essen für über eine Woche. Damit bist du den meisten weit voraus.'],
+    vorrat: ['Dein Vorrat', 'Genug zu trinken und zu essen für über eine Woche. Damit bist Du den meisten weit voraus.'],
     kocher: ['Dein Kocher', 'Warmes Essen hält Körper und Laune am Leben.'],
     hygiene: ['Deine Notfalltoilette', 'Klingt unglamourös, verhindert aber Krankheiten. Daran denkt kaum jemand.'],
     bargeld: ['Dein Bargeld', 'Wenn kein Kartenleser mehr geht, zählt nur noch Bares.'],
     reden: ['Dein Instinkt', 'Du gehst auf Menschen zu. Gemeinsam weiß man mehr als allein.'],
-    mut: ['Deine Neugier', 'Du hast dich der Frage gestellt. Damit bist du schon weiter als die meisten.']
+    mut: ['Deine Neugier', 'Du hast Dich der Frage gestellt. Damit bist Du schon weiter als die meisten.']
   };
 
   function tierFor(days) {
@@ -339,7 +339,7 @@
     $('r-kicker').textContent = own ? 'Dein Ergebnis' : 'Geteiltes Ergebnis';
     $('r-unit').textContent = r.days === 1 ? 'Tag' : 'Tage';
     $('r-tier').textContent = tier.title;
-    $('r-verdict').textContent = own ? tier.text : 'Jemand hat den Blackout-Test gemacht und hält ' + label + (r.days === 1 ? ' Tag' : ' Tage') + ' durch. Schaffst du mehr?';
+    $('r-verdict').textContent = own ? tier.text : 'Jemand hat den Blackout-Test gemacht und hält ' + label + (r.days === 1 ? ' Tag' : ' Tage') + ' durch. Schaffst Du mehr?';
     $('r-weak-title').textContent = WEAK[r.weak][0];
     $('r-weak-text').textContent = WEAK[r.weak][1];
     $('r-plus-title').textContent = PLUS[r.plus][0];
@@ -347,7 +347,7 @@
 
     var link = SHARE_URL + '#ergebnis-' + r.days + '-' + r.weak + '-' + r.plus;
     var msg = 'Ich hätte den Blackout ' + label + (r.days === 1 ? ' Tag' : ' Tage') +
-              ' durchgehalten. Mein Engpass: ' + WEAK[r.weak][0] + '. Wie lange schaffst du es? ' + link;
+              ' durchgehalten. Mein Engpass: ' + WEAK[r.weak][0] + '. Wie lange schaffst Du es? ' + link;
     $('r-wa').href = 'https://wa.me/?text=' + encodeURIComponent(msg);
     $('r-share').hidden = !own;
     $('r-copy').hidden = !own;
