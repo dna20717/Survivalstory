@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie lange hältst du durch? – Der Blackout-Test zu OHNE Licht</title>
+<meta name="description" content="Das Licht geht aus. Dein Handy auch. 10 Fragen, unter 3 Minuten: Wie lange würdest du einen Blackout durchhalten? Der Test zum Thriller OHNE Licht von Daniel Nagel.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0b0a">
+<meta property="og:title" content="Wie lange hältst du durch?">
+<meta property="og:description" content="Das Licht geht aus. Dein Handy auch. Der Blackout-Test zu OHNE Licht.">
+<meta property="og:image" content="assets/cover.jpg">
+<link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-share-url="https://dna20717.github.io/Survivalstory/test.html" data-home="./">
+<div class="page">
+
+  <header class="top">
+    <a class="brand" href="./" data-home-link>Ohne <span>Licht</span></a>
+    <span class="top-meta" id="meta" aria-live="polite"></span>
+  </header>
+
+  <div class="progress" aria-hidden="true"><div class="progress-bar" id="bar"></div></div>
+
+  <main class="stage" id="stage">
+
+    <!-- Start -->
+    <section class="view" id="v-intro">
+      <p class="kicker">Der Blackout-Test</p>
+      <h1 class="big">Wie lange<br>hältst du <span class="hot">durch?</span></h1>
+      <p class="lead">Tag 0, 19:12 Uhr. In ganz Deutschland geht das Licht aus. Dein Handy zeigt: kein Netz. Zehn Entscheidungen, unter drei Minuten.</p>
+      <button class="btn btn-solid" type="button" id="start">Das Licht geht aus</button>
+      <p class="fine">Keine Anmeldung. Keine Cookies. Deine Antworten verlassen deinen Browser nicht.</p>
+    </section>
+
+    <!-- Frage -->
+    <section class="view" id="v-q" hidden>
+      <p class="kicker" id="q-time"></p>
+      <p class="scene" id="q-scene"></p>
+      <h2 class="question" id="q-text" tabindex="-1"></h2>
+      <div class="answers" id="q-answers" role="group" aria-labelledby="q-text"></div>
+      <button class="back" type="button" id="back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+        Zurück
+      </button>
+    </section>
+
+    <!-- Ergebnis -->
+    <section class="view view-result" id="v-result" hidden>
+      <p class="kicker" id="r-kicker">Dein Ergebnis</p>
+      <div class="days">
+        <span class="days-num" id="r-days">0</span>
+        <span class="days-unit" id="r-unit">Tage</span>
+      </div>
+      <h1 class="tier" id="r-tier"></h1>
+      <p class="verdict" id="r-verdict"></p>
+
+      <div class="cards">
+        <div class="card-mini">
+          <p class="card-label">Dein Engpass</p>
+          <p class="card-title" id="r-weak-title"></p>
+          <p class="card-text" id="r-weak-text"></p>
+        </div>
+        <div class="card-mini">
+          <p class="card-label">Dein Pluspunkt</p>
+          <p class="card-title" id="r-plus-title"></p>
+          <p class="card-text" id="r-plus-text"></p>
+        </div>
+      </div>
+
+      <div class="share" id="r-share">
+        <a class="btn btn-solid" id="r-wa" href="#" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          Per WhatsApp teilen
+        </a>
+        <button class="btn btn-line" type="button" id="r-copy">Link kopieren</button>
+      </div>
+      <p class="copied" id="r-copied" aria-live="polite"></p>
+      <button class="btn btn-ghost" type="button" id="r-again">Test neu starten</button>
+
+      <section class="book" aria-labelledby="book-h">
+        <div class="book-cover">
+          <img src="assets/cover.jpg" width="800" height="1280" alt="Buchcover OHNE Licht von Daniel Nagel" loading="lazy">
+        </div>
+        <div class="book-body">
+          <p class="kicker">Der Roman zum Test</p>
+          <h2 class="book-h" id="book-h">Wie lange halten David, Christina und Babba durch?</h2>
+          <p class="book-text">In einer Nacht im September gehen in ganz Deutschland die Lichter aus. Ein Vater im Westerwald, eine Studentin in Berlin und ein Biker bei Siegen kämpfen ums Überleben und um die Menschen, die sie lieben.</p>
+          <p class="book-quote">„Morgen ist bestimmt alles wieder normal.“</p>
+          <div class="shops">
+            <a class="btn btn-line" href="https://www.amazon.de/dp/3384962680" target="_blank" rel="noopener">Amazon</a>
+            <a class="btn btn-line" href="https://www.thalia.de/shop/home/artikeldetails/A1082127391" target="_blank" rel="noopener">Thalia</a>
+            <a class="btn btn-line" href="https://shop.tredition.com/booktitle/OHNE_Licht/W-671-475-716" target="_blank" rel="noopener">tredition</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="real">
+        <p class="card-label">Willst du es genau wissen?</p>
+        <p class="real-text">Dieser Test ist ein Spiel zum Roman. Die Werte orientieren sich an den Empfehlungen des Bundesamts für Bevölkerungsschutz und Katastrophenhilfe (BBK), ersetzen aber keine echte Vorsorge.</p>
+        <ul class="real-links">
+          <li><a href="https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Ratgeber-Checkliste/ratgeber-checkliste_node.html" target="_blank" rel="noopener">BBK: Ratgeber und Checkliste für die Notfallvorsorge</a></li>
+          <li><a href="https://www.ernaehrungsvorsorge.de/private-vorsorge/notvorrat/vorratskalkulator/" target="_blank" rel="noopener">Vorratskalkulator: Wie viel brauchst du für 10 Tage?</a></li>
+        </ul>
+      </section>
+    </section>
+
+    <noscript><p class="lead">Für diesen Test brauchst du JavaScript. Es speichert nichts und schickt nichts weg.</p></noscript>
+  </main>
+
+  <footer class="foot">
+    <span>Ein Spiel zum Roman OHNE Licht · © 2026 Daniel Nagel</span>
+    <a href="./#rechtliches" data-legal-link>Impressum &amp; Datenschutz</a>
+  </footer>
+
+</div>
+<script src="test.js"></script>
+</body>
+</html>

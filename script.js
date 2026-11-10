@@ -106,6 +106,13 @@
     }
   });
 
+  // Direkt-Link auf Impressum & Datenschutz (z. B. vom Test)
+  if (location.hash === '#rechtliches') {
+    legal.classList.add('is-open');
+    legalBtn.setAttribute('aria-expanded', 'true');
+    setTimeout(function () { legal.scrollIntoView({ block: 'start' }); }, 300);
+  }
+
   // Start, sobald die Schrift geladen ist (sonst springt die Walze)
   var start = function () { play(false); };
   if (document.fonts && document.fonts.ready) {
