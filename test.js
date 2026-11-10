@@ -10,7 +10,7 @@
   var QUESTIONS = [
     {
       id: 'ort', time: 'Tag 0 · 19:12 Uhr',
-      scene: 'Der Fernseher geht aus. Das Licht auch. Dein Handy zeigt: kein Netz.',
+      scene: 'Der Fernseher geht aus. Das Licht auch. Dein Handy bleibt schwarz, egal welchen Knopf du drückst.',
       text: 'Wo bist du gerade zu Hause?',
       answers: [
         ['hoch', 'Stadtwohnung, vierter Stock oder höher'],
@@ -21,7 +21,7 @@
     },
     {
       id: 'erste', time: 'Tag 0 · 19:20 Uhr',
-      scene: 'Im Treppenhaus stehen Nachbarn mit Kerzen. Niemand weiß etwas.',
+      scene: 'Vor der Tür stehen Nachbarn mit Kerzen. Niemand weiß etwas.',
       text: 'Was tust du in der ersten Stunde?',
       answers: [
         ['warten', 'Abwarten. Morgen ist bestimmt alles wieder normal.'],
@@ -32,7 +32,7 @@
     },
     {
       id: 'trinken', time: 'Tag 0 · 21:40 Uhr',
-      scene: 'Inventur im Schein der Handylampe.',
+      scene: 'Inventur im Dunkeln. Du tastest dich durch die Schränke.',
       text: 'Wie viel Wasser und andere Getränke hast du pro Person im Haus?',
       answers: [
         ['1', 'Eine angebrochene Flasche'],
@@ -65,10 +65,10 @@
     },
     {
       id: 'licht', time: 'Tag 1 · 19:30 Uhr',
-      scene: 'Es wird wieder dunkel. Draußen hört man Sirenen, weit weg.',
+      scene: 'Es wird wieder dunkel. Kein Motor, kein Fernseher, nirgends ein Bildschirm. Nur Stille.',
       text: 'Womit machst du Licht, und wie erfährst du, was los ist?',
       answers: [
-        ['handy', 'Mit dem Handy. Akku: 31 Prozent.'],
+        ['handy', 'Gar nicht. Mein Handy ist tot, und sonst habe ich nichts.'],
         ['kerzen', 'Kerzen und eine Taschenlampe, aber keine Ersatzbatterien'],
         ['lampen', 'Mehrere Taschenlampen und Ersatzbatterien'],
         ['radio', 'Lampen, Batterien und ein Radio mit Batterie oder Kurbel']
