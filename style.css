@@ -19,6 +19,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 .tick-track a.tick-test::before{content:"+++";font-weight:600;letter-spacing:.05em;color:var(--accent);text-decoration:none;display:inline-block}
 .tick-track a.tick-test:hover{color:#ff8a52}
 
+.tag{font-size:.82em;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-right:.35em;text-decoration:none;display:inline-block}
+.top-link .tag{opacity:.85}
+
 /* Hero */
 .main{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:64px 24px 48px}
 .hero{width:100%;max-width:1160px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);grid-template-areas:"title cover" "sub cover" "shops cover";grid-template-rows:auto auto 1fr;column-gap:72px;row-gap:28px;align-items:start}
@@ -108,7 +111,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
   .back{font-size:3.7cqw}
   .h-shops{flex-direction:column}
   .test-link{width:auto;text-align:center;align-self:center;margin-top:10px;font-size:14px}
+  .test-link .tag{display:block;margin:0 0 4px}
   .top-link{padding:14px 20px 0}
+  .top-link a{text-align:right;font-size:12px}
+  .top-link .tag{display:block;margin:0 0 2px}
   .shop{width:100%}
 }
 
