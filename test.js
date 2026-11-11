@@ -433,10 +433,12 @@
 
   function finish() {
     var r = evaluate(answers);
-    justFinished = true;
-    var hash = 'ergebnis-' + r.days + '-' + r.weak + '-' + r.plus;
-    if (location.hash.slice(1) === hash) { renderResult(r, true); }
-    else { location.hash = hash; } // hashchange rendert
+    justFinished = false;
+    // Kein Ergebnis in der Adresse: Wer den Link teilt, schickt immer einen frischen Test
+    if (location.hash) {
+      try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    }
+    renderResult(r, true);
   }
 
   function parseHash() {
@@ -472,7 +474,7 @@
     $('r-plus-title').textContent = PLUS[r.plus][0];
     $('r-plus-text').textContent = PLUS[r.plus][1];
 
-    var link = SHARE_URL + '#ergebnis-' + r.days + '-' + r.weak + '-' + r.plus;
+    var link = SHARE_URL; // immer zum frischen Test
     var msg = 'Ich hätte den Blackout ' + label + (r.days === 1 ? ' Tag' : ' Tage') +
               ' durchgehalten. Mein Engpass: ' + WEAK[r.weak][0] + '. Wie lange schaffst Du es? ' + link;
     $('r-wa').href = 'https://wa.me/?text=' + encodeURIComponent(msg);
