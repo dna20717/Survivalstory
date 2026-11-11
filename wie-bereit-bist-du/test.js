@@ -230,7 +230,7 @@
       var im = new Image();
       im.onload = function () { coverImg = im; res(im); };
       im.onerror = function () { res(null); };
-      im.src = 'assets/cover.jpg';
+      im.src = '../assets/cover.jpg';
     });
   }
   function fontsReady() {
@@ -329,7 +329,7 @@
       }
       var tx = cover ? P + cw + 40 : P, tw = W - P - tx;
       ctx.font = '600 44px Inter'; ctx.fillStyle = INK;
-      var lines = wrap(ctx, 'Wie lange hältst Du durch?', tw);
+      var lines = wrap(ctx, 'Wie bereit bist Du?', tw);
       var ty = cy + 62;
       lines.forEach(function (l) { ctx.fillText(l, tx, ty); ty += 54; });
       ctx.font = '600 38px Inter'; ctx.fillStyle = ACC;
@@ -353,7 +353,7 @@
   var meta = $('meta');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var SHARE_URL = document.body.getAttribute('data-share-url') || location.href.split('#')[0];
-  var SHARE_HOST = SHARE_URL.replace(/^https?:\/\//, '').replace(/\.html$/, '').replace(/\/test$/, '/test');
+  var SHARE_HOST = SHARE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
   var posterBlob = null, posterUrl = null;
 
   var answers = {};
@@ -476,7 +476,7 @@
 
     var link = SHARE_URL; // immer zum frischen Test
     var msg = 'Ich hätte den Blackout ' + label + (r.days === 1 ? ' Tag' : ' Tage') +
-              ' durchgehalten. Mein Engpass: ' + WEAK[r.weak][0] + '. Wie lange schaffst Du es? ' + link;
+              ' durchgehalten. Mein Engpass: ' + WEAK[r.weak][0] + '. Wie bereit bist Du? ' + link;
     $('r-wa').href = 'https://wa.me/?text=' + encodeURIComponent(msg);
     $('r-share').hidden = !own;
     $('r-copy').hidden = !own;
